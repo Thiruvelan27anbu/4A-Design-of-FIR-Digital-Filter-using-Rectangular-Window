@@ -7,21 +7,6 @@
 PC installed with SCILAB. 
 
 # PROGRAM: 
-
-
-# OUTPUT: 
-
-
-# RESULT: 
-
-Thus design of low pass FIR digital filter using-Rectangular-Window waveforms were plotted and output was verified.
-
-# AIM 2: To perform DESIGN OF HIGH PASS FIR DIGITAL FILTERS using SCILAB.
-
-# APPARATUS REQUIRED: 
-PC installed with SCILAB. 
-
-# PROGRAM: 
 clc; clear; close;
 
 // Input values M = input('Enter the Odd Filter Length = '); Wc = input('Enter the Digital Cut off frequency = ');
@@ -44,37 +29,11 @@ clc; clear; close;
 
 subplot(2,1,2); plot(2*fr, hzm_dB); xlabel('Normalized Digital Frequency W'); ylabel('Magnitude in dB'); title('Frequency Response of FIR LPF using Rectangular Window');
 
-
 # OUTPUT: 
 
+<img width="752" height="662" alt="image" src="https://github.com/user-attachments/assets/d0bd0350-b60c-4e35-8dfb-0138b2496b97" />
 
 # RESULT: 
-Thus design of HIGH pass FIR digital filter using-Rectangular-Window waveforms were plotted and output was verified.
 
-# AIM 3: To perform DESIGN OF BAND PASS FIR DIGITAL FILTERS using SCILAB.
+Thus design of low pass FIR digital filter using-Rectangular-Window waveforms were plotted and output was verified.
 
-# APPARATUS REQUIRED: 
-PC installed with SCILAB. 
-
-# PROGRAM: 
-
-
-# OUTPUT: 
-
-
-# RESULT: 
-Thus design of BAND pass FIR digital filter using-Rectangular-Window waveforms were plotted and output was verified.
-
-# AIM 4: To perform DESIGN OF BAND STOP FIR DIGITAL FILTER using SCILAB.
-
-# APPARATUS REQUIRED: 
-PC installed with SCILAB. 
-
-# PROGRAM: 
-
-
-# OUTPUT: 
-
-
-# RESULT: 
-Thus design of BAND STOP FIR digital filter using-Rectangular-Window waveforms were plotted and output was verified.
