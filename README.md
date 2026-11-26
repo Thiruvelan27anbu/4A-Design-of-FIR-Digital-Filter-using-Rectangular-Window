@@ -1,6 +1,6 @@
 
-EXP 4e: Design-of-FIR-Digital-Filter-using-Barlett-Window
-AIM 1: To perform Design-of-LOWPASS FIR-Digital-Filter-using-Barlett-Window using SCILAB.
+##EXP 4e: Design-of-FIR-Digital-Filter-using-Barlett-Window
+##AIM 1: To perform Design-of-LOWPASS FIR-Digital-Filter-using-Barlett-Window using SCILAB.
 APPARATUS REQUIRED:
 PC installed with SCILAB.
 
