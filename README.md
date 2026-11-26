@@ -1,42 +1,134 @@
 
-## Design-of-FIR-Filters-using-rectangular-window
-# EXP 4 A: 
-DESIGN OF LOW PASS FIR DIGITAL FILTER
-# AIM 
+EXP 4e: Design-of-FIR-Digital-Filter-using-Barlett-Window
+AIM 1: To perform Design-of-LOWPASS FIR-Digital-Filter-using-Barlett-Window using SCILAB.
+APPARATUS REQUIRED:
+PC installed with SCILAB.
 
-To generate design of low pass FIR digital filter using SCILAB
-
-# APPARATUS REQUIRED: 
-PC installed with SCILAB. 
-
-# PROGRAM: 
+PROGRAM:
 clc; clear; close;
 
-// Input values M = input('Enter the Odd Filter Length = '); Wc = input('Enter the Digital Cut off frequency = ');
+N = 21;
+wc = %pi / 2;
+alpha = (N - 1) / 2;
 
-// Centre value alpha = (M - 1)/2;
+hd = zeros(1, N); for n = 0 : N-1 if n == alpha then hd(n+1) = wc / %pi; else hd(n+1) = sin(wc * (n - alpha)) / (%pi * (n - alpha)); end end
 
-// Ideal LPF impulse response for n = 1:M if (n == alpha + 1) then hd(n) = Wc/%pi; else hd(n) = sin(Wc*((n-1)-alpha)) / (((n-1)-alpha)*%pi); end end
+w = zeros(1, N); for n = 0 : N-1 w(n+1) = 1 - (2 * abs(n - alpha)) / (N - 1); end
 
-// Rectangular Window for n = 1:M W(n) = 1; end
+h = hd .* w;
 
-// Windowing process h = hd .* W;
+[H, w_freq] = frmag(h, 256);
 
-// Display filter coefficients disp(h, 'Filter Coefficients are');
+figure; subplot(2, 1, 1); plot2d3(0:N-1, h);
+plot(0:N-1, h, 'ro');
+xtitle('Impulse Response', 'n', 'h(n)'); xgrid(1);
 
-// Frequency response [hzm, fr] = frmag(h, 256);
+subplot(2, 1, 2); H_dB = 20 * log10(H);
+plot(w_freq, H_dB); xtitle('Magnitude Response', 'Normalized Frequency', 'Magnitude (dB)'); xgrid(1);
 
-// Magnitude response subplot(2,1,1); plot(2*fr, hzm); xlabel('Normalized Digital Frequency W'); ylabel('Magnitude'); title('Frequency Response of FIR LPF using Rectangular Window');
+OUTPUT:
+<img width="1917" height="896" alt="image" src="https://github.com/user-attachments/assets/4d69642a-42cd-41bc-af4a-dd4b66f338a3" />
 
-// Magnitude response in dB hzm_dB = 20*log10(hzm);
+RESULT:
+Thus design of low pass FIR digital filter using-Barlett-Window waveforms were plotted and output was verified.
 
-subplot(2,1,2); plot(2*fr, hzm_dB); xlabel('Normalized Digital Frequency W'); ylabel('Magnitude in dB'); title('Frequency Response of FIR LPF using Rectangular Window');
+AIM 2: To perform DESIGN OF HIGH PASS FIR DIGITAL FILTERS using SCILAB.
+APPARATUS REQUIRED:
+PC installed with SCILAB.
 
-# OUTPUT: 
+PROGRAM:
+clc; clear; close;
 
-<img width="752" height="662" alt="image" src="https://github.com/user-attachments/assets/d0bd0350-b60c-4e35-8dfb-0138b2496b97" />
+N = 21;
+wc = %pi / 2;
+alpha = (N - 1) / 2;
 
-# RESULT: 
+hd = zeros(1, N); for n = 0 : N-1 if n == alpha then hd(n+1) = 1 - (wc / %pi); else hd(n+1) = -sin(wc * (n - alpha)) / (%pi * (n - alpha)); end end
 
-Thus design of low pass FIR digital filter using-Rectangular-Window waveforms were plotted and output was verified.
+w = zeros(1, N); for n = 0 : N-1 w(n+1) = 1 - (2 * abs(n - alpha)) / (N - 1); end
 
+h = hd .* w;
+
+[H, w_freq] = frmag(h, 256);
+
+figure; subplot(2, 1, 1); plot2d3(0:N-1, h);
+plot(0:N-1, h, 'ro');
+xtitle('Impulse Response', 'n', 'h(n)'); xgrid(1);
+
+subplot(2, 1, 2); H_dB = 20 * log10(H);
+plot(w_freq, H_dB); xtitle('Magnitude Response', 'Normalized Frequency', 'Magnitude (dB)'); xgrid(1);
+
+OUTPUT:
+<img width="1917" height="892" alt="image" src="https://github.com/user-attachments/assets/be2b5b62-0c73-4a4f-973f-127119a6748a" />
+
+RESULT:
+Thus design of HIGH pass FIR digital filter using-Barlett-Window waveforms were plotted and output was verified.
+
+AIM 3: To perform DESIGN OF BAND PASS FIR DIGITAL FILTERS using SCILAB.
+APPARATUS REQUIRED:
+PC installed with SCILAB.
+
+PROGRAM:
+clc; clear; close;
+
+N = 21;
+wc1 = %pi / 4;
+wc2 = 3 * %pi / 4;
+alpha = (N - 1) / 2;
+
+hd = zeros(1, N); for n = 0 : N-1 if n == alpha then hd(n+1) = (wc2 - wc1) / %pi; else hd(n+1) = (sin(wc2 * (n - alpha)) - sin(wc1 * (n - alpha))) / (%pi * (n - alpha)); end end
+
+w = zeros(1, N); for n = 0 : N-1 w(n+1) = 1 - (2 * abs(n - alpha)) / (N - 1); end
+
+h = hd .* w;
+
+[H, w_freq] = frmag(h, 256);
+
+figure; subplot(2, 1, 1); plot2d3(0:N-1, h);
+plot(0:N-1, h, 'ro');
+xtitle('Impulse Response', 'n', 'h(n)'); xgrid(1);
+
+subplot(2, 1, 2); H_dB = 20 * log10(H);
+plot(w_freq, H_dB); xtitle('Magnitude Response', 'Normalized Frequency', 'Magnitude (dB)'); xgrid(1);
+
+OUTPUT:
+<img width="1917" height="893" alt="image" src="https://github.com/user-attachments/assets/3b83ee12-d52d-445b-af10-4d94bf067392" />
+
+RESULT:
+Thus design of BAND pass FIR digital filter using-Barlettr-Window waveforms were plotted and output was verified.
+
+AIM 4: To perform DESIGN OF BAND STOP FIR DIGITAL FILTER using SCILAB.
+APPARATUS REQUIRED:
+PC installed with SCILAB.
+
+PROGRAM:
+clc; clear; close;
+
+N = 21;
+wc1 = %pi / 4;
+wc2 = 3 * %pi / 4;
+alpha = (N - 1) / 2;
+
+hd = zeros(1, N); for n = 0 : N-1 if n == alpha then hd(n+1) = 1 - ((wc2 - wc1) / %pi); else hd(n+1) = (sin(wc1 * (n - alpha)) - sin(wc2 * (n - alpha))) / (%pi * (n - alpha)); end end
+
+w = zeros(1, N); for n = 0 : N-1 w(n+1) = 1 - (2 * abs(n - alpha)) / (N - 1); end
+
+h = hd .* w;
+
+[H, w_freq] = frmag(h, 256);
+
+figure; subplot(2, 1, 1); plot2d3(0:N-1, h);
+plot(0:N-1, h, 'ro');
+xtitle('Impulse Response', 'n', 'h(n)'); xgrid(1);
+
+subplot(2, 1, 2); H_dB = 20 * log10(H);
+plot(w_freq, H_dB); xtitle('Magnitude Response', 'Normalized Frequency', 'Magnitude (dB)'); xgrid(1);
+
+OUTPUT:
+<img width="1917" height="890" alt="image" src="https://github.com/user-attachments/assets/6bccaa86-2fd1-4462-9f39-848626eeef67" />
+
+RESULT:
+Thus design of BAND STOP FIR digital filter using-Barlett-Window waveforms were plotted and output was verified.
+image
+RESULT:
+Thus design of BAND STOP FIR digital filter using-Barlett-Window waveforms were plotted and output was verified.
