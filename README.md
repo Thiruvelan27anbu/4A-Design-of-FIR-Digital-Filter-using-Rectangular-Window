@@ -1,4 +1,4 @@
-# FIR-FILTER-DESIGN
+.# FIR-FILTER-DESIGN
 # EXP 4 A: Design-of-FIR-Digital-Filter-using-Rectangular-Window
 
 # AIM 1:  To perform Design-of-LOWPASS FIR-Digital-Filter-using-Rectangular-Window using SCILAB.
